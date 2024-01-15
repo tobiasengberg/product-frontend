@@ -1,13 +1,15 @@
-import React from 'react';
+import React, {useState} from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import Root from "./pages/Root";
 import ErrorPage from "./pages/ErrorPage";
-import ProductsList from "./pages/ProductsList";
+import ProductsList, {productsLoader} from "./pages/ProductsList";
 import ShoppingCart from "./pages/ShoppingCart";
 import ProductsSidebar from "./components/ProductsSidebar";
 import PowerTools from "./pages/PowerTools";
+import axios from "axios";
+import Product from "./pages/Product";
 
 const router = createBrowserRouter([
     {
@@ -21,11 +23,17 @@ const router = createBrowserRouter([
                 children: [
                     {
                         path: "overview",
-                        element: <ProductsList />
+                        element: <ProductsList />,
+                        loader: () => axios.get("/products.json").then(result =>  result.data),
                     },
                     {
                         path: "powertools",
                         element: <PowerTools />
+                    },
+                    {
+                        path: ":productId",
+                        element: <Product />,
+                        loader: () => axios.get("/products.json").then(result =>  result.data),
                     }
 
                 ]

@@ -1,3 +1,7 @@
+root {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -60,4 +64,27 @@ code {
 .products-sidebar h3 {
   color: #20203d;
   padding: 1rem 0 0 3rem;
+}
+
+.single-product {
+  padding: 30px 0 0 50px;
+  color: #000;
+}
+
+.product-name {
+  font-size: 2rem;
+}
+
+.product-desc {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.product-price {
+  font-size: 1rem;
+  color: red;
+}
+
+.product-cat {
+  font-size: 1rem;
 }
