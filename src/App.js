@@ -1,44 +1,59 @@
 
 import './App.css';
-import React, {useEffect, useState} from "react";
-import ProductTable from "./components/ProductTable";
+import React, {useState} from "react";
 import axios from "axios";
+import {createBrowserRouter, RouterProvider} from "react-router-dom";
+import Root from "./pages/Root";
+import ErrorPage from "./pages/ErrorPage";
+import ProductsSidebar from "./components/ProductsSidebar";
+import ProductsList from "./pages/ProductsList";
+import PowerTools from "./pages/PowerTools";
+import Product from "./pages/Product";
+import ShoppingCart from "./pages/ShoppingCart";
 
 function App() {
 
-  const [products, setProducts] = useState([
-      { name: "Mudd",
-        description: "Sticks to feets"
-      }
-  ]);
+    const [shopping, setShopping] = useState([]);
+    let cartCounter = shopping.length;
 
-    useEffect(() => {
-        axios.get('/product')
-            .then((response) => {
-                setProducts(response.data)
-            })
-    }, []);
+    const router = createBrowserRouter([
+        {
+            path: "/",
+            element: <Root counter={cartCounter} />,
+            errorElement: <ErrorPage />,
+            children: [
+                {
+                    path: "/products",
+                    element: <ProductsSidebar />,
+                    children: [
+                        {
+                            path: "overview",
+                            element: <ProductsList />,
+                            loader: () => axios.get("/products.json").then(result =>  result.data),
+                        },
+                        {
+                            path: "powertools",
+                            element: <PowerTools />
+                        },
+                        {
+                            path: ":productId",
+                            element: <Product setShopping={setShopping} shopping={shopping}/>,
+                            loader: () => axios.get("/products.json").then(result =>  result.data),
+                        }
 
+                    ]
 
+                },
+                {
+                    path: "/shoppingcart",
+                    element: <ShoppingCart shopping={shopping} setShopping={setShopping}/>
+                }
+            ]
+        }
+    ]);
 
   return (
-    <div className="App">
-        <ProductTable products={products} />
-        <button onClick={() => {
-            axios.post('/product',
-                {
-                    name: "Ball",
-                    description: "Is bouncy"
-                }
-                )
-                .then((response) => {
-                    console.log(response);
-                })
-        }}>
-            Click to add
-        </button>
-
-    </div>
+      <RouterProvider router={router} />
   );
 }
 
