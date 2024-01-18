@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link, useLoaderData, useParams} from "react-router-dom";
+import { Link, useLoaderData, useParams } from "react-router-dom";
 import styled from "styled-components";
 
 const BuyButton = styled.button`
@@ -16,36 +16,45 @@ const BuyButton = styled.button`
   }
 `;
 
-const Product = ({shopping, setShopping}) => {
+const Product = ({ shopping, setShopping }) => {
     const products = useLoaderData();
-
     const paramsTest = useParams();
-    console.log(paramsTest);
 
-    const individualProduct = products !== undefined &&
-        products.filter( product => product.id == paramsTest.productId)[0];
+    // const individualProduct = products !== undefined && products.filter(product => product.id == paramsTest.productId)[0];
+    const individualProduct = products.find(a => a.id === parseInt(paramsTest.productId));
 
     const addProduct = () => {
-        let success = 1;
+        /* let success = 1;
+
         for (let i = 0; i < shopping.length; i++) {
-            if(individualProduct.id === shopping[i].id) {
+            if (individualProduct.id === shopping[i].id) {
                 addAmount(i);
                 success = 0;
             }
         }
-        success === 1 && addItem();
+        success === 1 && addItem(); */
+
+        const isAlreadyInCart = Boolean(shopping.find(a => a.id === individualProduct.id));
+        if (isAlreadyInCart) addAmount(individualProduct.id);
+        else addItem();
     }
 
     const addAmount = (id) => {
         let newArray = [...shopping];
-        newArray[id].amount += 1;
+        /*newArray[id - 1].amount += 1;
+        setShopping(newArray); */
+
+        newArray.find(a => a.id === id).amount += 1;
         setShopping(newArray);
     }
 
     const addItem = () => {
-        let newProduct = {...individualProduct, amount: 1};
+        /* let newProduct = { ...individualProduct, amount: 1 };
         let newArray = [...shopping, newProduct];
-        setShopping(newArray);
+        setShopping(newArray); */
+
+        individualProduct.amount = 1
+        setShopping([...shopping, individualProduct])
     }
 
     return (
