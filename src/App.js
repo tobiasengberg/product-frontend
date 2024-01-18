@@ -1,8 +1,8 @@
 
 import './App.css';
-import React, {useState} from "react";
+import React, { useState } from "react";
 import axios from "axios";
-import {createBrowserRouter, RouterProvider} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Root from "./pages/Root";
 import ErrorPage from "./pages/ErrorPage";
 import ProductsSidebar from "./components/ProductsSidebar";
@@ -12,9 +12,9 @@ import Product from "./pages/Product";
 import ShoppingCart from "./pages/ShoppingCart";
 
 function App() {
-
     const [shopping, setShopping] = useState([]);
-    let cartCounter = shopping.length;
+    const cartCounter = shopping.reduce((acc, item) => acc + item.amount, 0);
+
 
     const router = createBrowserRouter([
         {
@@ -29,7 +29,7 @@ function App() {
                         {
                             path: "overview",
                             element: <ProductsList />,
-                            loader: () => axios.get("/products.json").then(result =>  result.data),
+                            loader: () => axios.get("/products.json").then(result => result.data),
                         },
                         {
                             path: "powertools",
@@ -37,8 +37,8 @@ function App() {
                         },
                         {
                             path: ":productId",
-                            element: <Product setShopping={setShopping} shopping={shopping}/>,
-                            loader: () => axios.get("/products.json").then(result =>  result.data),
+                            element: <Product setShopping={setShopping} shopping={shopping} />,
+                            loader: () => axios.get("/products.json").then(result => result.data),
                         }
 
                     ]
@@ -46,15 +46,15 @@ function App() {
                 },
                 {
                     path: "/shoppingcart",
-                    element: <ShoppingCart shopping={shopping} setShopping={setShopping}/>
+                    element: <ShoppingCart shopping={shopping} setShopping={setShopping} />
                 }
             ]
         }
     ]);
 
-  return (
-      <RouterProvider router={router} />
-  );
+    return (
+        <RouterProvider router={router} />
+    );
 }
 
 export default App;
