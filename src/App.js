@@ -1,6 +1,6 @@
 
 import './App.css';
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import Root from "./pages/Root";
@@ -10,11 +10,20 @@ import ProductsList from "./pages/ProductsList";
 import PowerTools from "./pages/PowerTools";
 import Product from "./pages/Product";
 import ShoppingCart from "./pages/ShoppingCart";
+import {localstorage} from "./helper/localstorage";
 
 function App() {
 
-    const [shopping, setShopping] = useState([]);
-    let cartCounter = shopping.length;
+    const [shopping, setShopping] = useState(localstorage?.get('shopping') || []);
+
+    useEffect(() => {
+            localstorage?.set('shopping', shopping)
+        }, [shopping]
+    );
+
+
+    let cartCounter = shopping
+        .reduce((a, b) => a + b.amount, 0);
 
     const router = createBrowserRouter([
         {
@@ -26,8 +35,7 @@ function App() {
                     path: "/products",
                     element: <ProductsSidebar />,
                     children: [
-                        {
-                            path: "overview",
+                        {   index: true,
                             element: <ProductsList />,
                             loader: () => axios.get("/products.json").then(result =>  result.data),
                         },

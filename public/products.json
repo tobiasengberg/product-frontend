@@ -3,7 +3,7 @@
     {"id":2,"name":"Mangoes","description":"Oil & Gas Production","price":88.38,"category":"Product Management"},
     {"id":3,"name":"Yoghurt Tubes","description":"EDP Services","price":125.27,"category":"Research and Development"},
     {"id":4,"name":"Juice - Pineapple, 48 Oz","description":"Major Pharmaceuticals","price":18.48,"category":"Legal"},
-    {"id":5,"name":"Wine - Red, Cabernet Merlot","description":"n/a","price":171.23,"category":"Accounting"},
+    {"id":5,"name":"Wine - Red, Cabernet Merlot","description":"A Nice Drink","price":171.23,"category":"Accounting"},
     {"id":6,"name":"Coriander - Ground","description":"Business Services","price":190.81,"category":"Business Development"},
     {"id":7,"name":"Champagne - Brights, Dry","description":"Finance/Investors Services","price":149.11,"category":"Human Resources"}
 ]

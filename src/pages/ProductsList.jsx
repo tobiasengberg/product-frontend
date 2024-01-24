@@ -1,6 +1,15 @@
 import React from 'react';
 import axios from "axios";
-import {Link, useLoaderData} from "react-router-dom";
+import { useLoaderData} from "react-router-dom";
+import ProductCard from "../components/ProductCard";
+import styled from "styled-components";
+
+const Container = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  padding: 20px;
+`;
+
 
 export const productsLoader = () => {
     return axios.get("/products.json").then(result => result);
@@ -10,14 +19,11 @@ export const productsLoader = () => {
 const ProductsList = () => {
     const products = useLoaderData();
     return (
-        <div>
-            <h1>List of products</h1>
+        <Container>
             {products !== undefined && products.map( product => (
-                <div>
-                    <Link to={`/products/${product.id}`}>{product.name}</Link>
-                </div>
+                <ProductCard product={product} />
             ))}
-        </div>
+        </Container>
     );
 };
 

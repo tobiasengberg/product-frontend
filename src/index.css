@@ -4,9 +4,7 @@ root {
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'PT Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -22,7 +20,16 @@ code {
 }
 
 .site-navigation {
-  background-color: #333;
+  background-color: #2a364b;
+}
+
+.site-header-info {
+  background-color: #d5dff0;
+  color: #647490;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 700;
+  padding: 6px;
 }
 
 .nav-options {
@@ -57,7 +64,7 @@ code {
   display: flex;
   flex-direction: column;
   background-color: #c5cbf0;
-  min-height: 100vh;
+  min-height: 100%;
 }
 
 .products-sidebar h2,
@@ -90,7 +97,9 @@ code {
 }
 
 .shopping-cart-icon {
-  background-color: red;
+  background-color: #dae2f0;
+  color: #2a364b;
+  font-weight: 700;
   padding: 3px 7px;
   border-radius: 15px;
  margin-left: 5px;
