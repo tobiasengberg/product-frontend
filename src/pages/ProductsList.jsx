@@ -12,7 +12,7 @@ const Container = styled.div`
 
 
 export const productsLoader = () => {
-    return axios.get("/products.json").then(result => result);
+    return axios.get("/product").then(result => result.data);
 
 }
 

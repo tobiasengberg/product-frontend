@@ -6,11 +6,12 @@ import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import Root from "./pages/Root";
 import ErrorPage from "./pages/ErrorPage";
 import ProductsSidebar from "./components/ProductsSidebar";
-import ProductsList from "./pages/ProductsList";
+import ProductsList, {productsLoader} from "./pages/ProductsList";
 import PowerTools from "./pages/PowerTools";
 import Product from "./pages/Product";
 import ShoppingCart from "./pages/ShoppingCart";
 import {localstorage} from "./helper/localstorage";
+import SignIn from "./pages/SignIn";
 
 function App() {
 
@@ -37,7 +38,7 @@ function App() {
                     children: [
                         {   index: true,
                             element: <ProductsList />,
-                            loader: () => axios.get("/products.json").then(result =>  result.data),
+                            loader: productsLoader,
                         },
                         {
                             path: "powertools",
@@ -46,7 +47,7 @@ function App() {
                         {
                             path: ":productId",
                             element: <Product setShopping={setShopping} shopping={shopping}/>,
-                            loader: () => axios.get("/products.json").then(result =>  result.data),
+                            loader: () => axios.get("/product").then(result =>  result.data),
                         }
 
                     ]
@@ -55,6 +56,10 @@ function App() {
                 {
                     path: "/shoppingcart",
                     element: <ShoppingCart shopping={shopping} setShopping={setShopping}/>
+                },
+                {
+                    path: "/signin",
+                    element: <SignIn />
                 }
             ]
         }

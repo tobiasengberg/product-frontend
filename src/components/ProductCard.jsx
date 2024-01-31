@@ -19,6 +19,9 @@ const Card = styled.div`
   }
   `;
 const ProductCard = ({product}) => {
+
+    console.log(product);
+
     return (
         <Card>
             <img src={`/img/${product.id}.png`} alt={product.name}/>

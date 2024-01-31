@@ -98,10 +98,9 @@ code {
 
 .shopping-cart-icon {
   background-color: #dae2f0;
+  padding: 0 4px;
+  border-radius: 15px;
+  margin-left: 5px;
   color: #2a364b;
   font-weight: 700;
-  padding: 3px 7px;
-  border-radius: 15px;
- margin-left: 5px;
-
 }

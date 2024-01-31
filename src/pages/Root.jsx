@@ -13,10 +13,12 @@ const Root = ({counter}) => {
             <nav className="site-navigation">
                 <ul className="nav-options">
                     <li className="nav-item"><NavLink to="/products">Products</NavLink></li>
-                    <li className="nav-item"><NavLink to="/shoppingcart">Shopping Cart<span className="shopping-cart-icon">{counter}</span></NavLink></li>
+                    <li className="nav-item"><NavLink to="/signin">Sign in</NavLink></li>
+                    <li className="nav-item"><NavLink to="/shoppingcart">Shopping Cart<span
+                        className="shopping-cart-icon">{counter}</span></NavLink></li>
                 </ul>
             </nav>
-            <Outlet />
+            <Outlet/>
         </div>
     );
 };
