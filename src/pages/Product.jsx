@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link, useLoaderData, useParams} from "react-router-dom";
 import styled from "styled-components";
+import axios from "axios";
 
 const BuyButton = styled.button`
   background-color: forestgreen;
@@ -16,19 +17,18 @@ const BuyButton = styled.button`
   }
 `;
 
+export const productLoader = ({params}) => {
+    return axios.get(`/product/item/${params.productId}`).then(result => result.data);
+}
+
 const Product = ({shopping, setShopping}) => {
-    const products = useLoaderData();
+    const product = useLoaderData();
 
-    const paramsTest = useParams();
-    console.log(paramsTest);
-
-    const individualProduct = products !== undefined &&
-        products.filter( product => product.id == paramsTest.productId)[0];
 
     const addProduct = () => {
         let success = 1;
         for (let i = 0; i < shopping.length; i++) {
-            if(individualProduct.id === shopping[i].id) {
+            if(product.id === shopping[i].id) {
                 addAmount(i);
                 success = 0;
             }
@@ -43,7 +43,7 @@ const Product = ({shopping, setShopping}) => {
     }
 
     const addItem = () => {
-        let newProduct = {...individualProduct, amount: 1};
+        let newProduct = {...product, amount: 1};
         let newArray = [...shopping, newProduct];
         setShopping(newArray);
     }
@@ -53,12 +53,14 @@ const Product = ({shopping, setShopping}) => {
             <h1>Product page</h1>
             <Link to="/products/overview">Back to Overview</Link>
             <div className="single-product">
-                <p className="product-name">{individualProduct.name}</p>
-                <p className="product-desc">{individualProduct.description}</p>
-                <p className="product-price" >{individualProduct.price}</p>
-                <p className="product-cat">{individualProduct.category}</p>
+                <p className="product-name">{product.name}</p>
+                <p className="product-desc">{product.description}</p>
+                <p className="product-price" >{product.price}</p>
+                <p className="product-cat">{product.category}</p>
                 <BuyButton onClick={addProduct}>Buy</BuyButton>
             </div>
+            <div>Reviews</div>
+            <div>Details</div>
         </div>
     );
 };

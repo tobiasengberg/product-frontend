@@ -28,12 +28,13 @@ const ProductItem = styled.div`
   & > div {
     background-color: #edf0f7;
     margin-bottom: 50px;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 120px 290px 90px 120px auto;
     padding: 10px;
-
-    & > div:nth-child(2) > p:first-child {
+      text-align: end;
+    & > a > p:first-child {
       font-weight: bold;
+        
     }
 
     & > div {
@@ -45,8 +46,9 @@ const ProductItem = styled.div`
       padding-left: 8px;
     }
 
-    & > div:nth-child(2) {
+    & > a {
       flex-direction: column;
+        text-align: start;
     }
   }
 `;
@@ -97,12 +99,12 @@ const ShoppingCart = ({shopping, setShopping}) => {
                 shopping.map(product => {
                 itemsCost+= product.price * product.amount;
                 return (
-                    <ProductItem to={`/products/${product.id}`}>
+                    <ProductItem >
                         <div key={product.id}>
                             <img src={`/img/${product.id}.png`} alt=""/>
-                            <Link to={`/products/${product.id}`}>
-                                <p>{product.brand}</p>
-                                <p>{product.description}</p>
+                            <Link to={`/products/product/${product.id}`}>
+                                <p>{product.name}</p>
+                                <p>{product.description.substring(0, 40)} ...</p>
                             </Link>
                             <BsTrash3 onClick={() => trashItem(product.id)}/>
                             <div>

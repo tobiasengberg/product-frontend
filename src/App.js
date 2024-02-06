@@ -7,8 +7,8 @@ import Root from "./pages/Root";
 import ErrorPage from "./pages/ErrorPage";
 import ProductsSidebar from "./components/ProductsSidebar";
 import ProductsList, {productsLoader} from "./pages/ProductsList";
-import PowerTools from "./pages/PowerTools";
-import Product from "./pages/Product";
+import Category, {categoryLoader} from "./pages/Category";
+import Product, {productLoader} from "./pages/Product";
 import ShoppingCart from "./pages/ShoppingCart";
 import {localstorage} from "./helper/localstorage";
 import SignIn from "./pages/SignIn";
@@ -41,13 +41,14 @@ function App() {
                             loader: productsLoader,
                         },
                         {
-                            path: "powertools",
-                            element: <PowerTools />
+                            path: "category/:categoryName",
+                            element: <Category />,
+                            loader: categoryLoader,
                         },
                         {
-                            path: ":productId",
+                            path: "product/:productId",
                             element: <Product setShopping={setShopping} shopping={shopping}/>,
-                            loader: () => axios.get("/product").then(result =>  result.data),
+                            loader: productLoader,
                         }
 
                     ]

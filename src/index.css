@@ -19,8 +19,12 @@ code {
     monospace;
 }
 
-.site-navigation {
+.primary-site-navigation {
   background-color: #2a364b;
+}
+
+.secondary-site-navigation {
+  background-color: #f9fcff;
 }
 
 .site-header-info {
@@ -41,12 +45,24 @@ code {
 
 .nav-item {
   padding: .5rem 3rem;
-  color: #DDD;
   text-decoration: none;
 }
 
-.nav-item a:visited {
-  color: #ddd;
+.primary-nav-item {
+  color: #f9fcff;
+}
+
+.secondary-nav-item {
+  color: #091c2f;
+}
+
+.primary-nav-item a:visited {
+  color: #f9fcff;
+  text-decoration: none;
+}
+
+.secondary-nav-item a:visited {
+  color: #091c2f;
   text-decoration: none;
 }
 

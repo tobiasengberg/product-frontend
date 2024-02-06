@@ -20,13 +20,11 @@ const Card = styled.div`
   `;
 const ProductCard = ({product}) => {
 
-    console.log(product);
-
     return (
         <Card>
             <img src={`/img/${product.id}.png`} alt={product.name}/>
             <div>
-                <Link to={`/products/${product.id}`}>{product.name}</Link>
+                <Link to={`/products/product/${product.id}`}>{product.name}</Link>
                 <p>{product.price}</p>
                 <p>{product.category}</p>
             </div>
