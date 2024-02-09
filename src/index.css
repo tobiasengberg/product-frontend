@@ -1,5 +1,16 @@
-root {
+:root {
   box-sizing: border-box;
+  --light-cl1: #fafcff;
+  --light-cl2: #d7e0ee;
+  --light-cl3: #b3c6e2;
+  --light-cl4: #6f93ca;
+  --light-cl5: #4a79c0;
+  --dark-cl1: #2e5b9f;
+  --dark-cl2: #1b3d6f;
+  --dark-cl3: #0e2952;
+  --dark-cl4: #061a39;
+  --dark-cl5: #030e1d;
+
 }
 
 body {
@@ -20,15 +31,15 @@ code {
 }
 
 .primary-site-navigation {
-  background-color: #2a364b;
+  background-color: #4a5569;
 }
 
 .secondary-site-navigation {
-  background-color: #f9fcff;
+  background-color: var(--light-cl1);
 }
 
 .site-header-info {
-  background-color: #d5dff0;
+  background-color: var(--light-cl2);
   color: #647490;
   text-align: center;
   font-size: 1.1rem;
@@ -49,11 +60,11 @@ code {
 }
 
 .primary-nav-item {
-  color: #f9fcff;
+  color: var(--light-cl1);
 }
 
 .secondary-nav-item {
-  color: #091c2f;
+  color: var(--dark-cl4);
 }
 
 .primary-nav-item a:visited {

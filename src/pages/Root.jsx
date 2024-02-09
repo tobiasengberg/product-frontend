@@ -1,19 +1,30 @@
 import React, {useState} from 'react';
 import { NavLink, Outlet} from "react-router-dom";
 import {SiteValues} from "../SiteValues";
+import {LoginContext} from "../contexts";
+import axios from "axios";
 
 const Root = ({counter}) => {
+    const [loggedIn, setLoggedIn] = useState(false);
 
-
+    const handleLogout = () => {
+        axios.post('/logout', {}).then(response => {
+            console.log(response.status);
+            response.status == 200 && setLoggedIn(false);
+        })
+            .catch(error => console.log(error));
+    }
     return (
-        <div>
+        <LoginContext.Provider value={{loggedIn, setLoggedIn}}>
             <div className="site-header-info">
                 <p>{`Free Shipping from ${SiteValues.FreeShipping} kr`}</p>
             </div>
             <nav className="primary-site-navigation">
                 <ul className="nav-options">
                     <li className="primary-nav-item nav-item"><NavLink to="/products">Products</NavLink></li>
-                    <li className="primary-nav-item nav-item"><NavLink to="/signin">Sign in</NavLink></li>
+                    {loggedIn ? <li className="primary-nav-item nav-item"><button onClick={handleLogout}>Sign Out</button></li>
+                        : <li className="primary-nav-item nav-item"><NavLink to="/signin">Sign In</NavLink></li>
+                    }
                     <li className="primary-nav-item nav-item"><NavLink to="/shoppingcart">Shopping Cart<span
                         className="shopping-cart-icon">{counter}</span></NavLink></li>
                 </ul>
@@ -27,7 +38,7 @@ const Root = ({counter}) => {
                 </ul>
             </nav>
             <Outlet/>
-        </div>
+        </LoginContext.Provider>
     );
 };
 
