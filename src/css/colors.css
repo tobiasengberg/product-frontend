@@ -1,0 +1,51 @@
+:root {
+    --light-key1: 216;
+    --light-cl1: hsl(var(--light-key1), 90%, 95%);
+    --light-cl2: hsl(var(--light-key1), 85%, 85%);
+    --light-cl3: hsl(var(--light-key1), 75%, 70%);
+    --light-cl4: hsl(var(--light-key1), 62%, 55%);
+    --light-cl5: hsl(var(--light-key1), 50%, 40%);
+    --light-key2: 120;
+    --light-cl1-1: hsl(var(--light-key2), 90%, 95%);
+    --light-cl2-1: hsl(var(--light-key2), 85%, 85%);
+    --light-cl3-1: hsl(var(--light-key2), 75%, 70%);
+    --light-cl4-1: hsl(var(--light-key2), 55%, 55%);
+    --light-cl5-1: hsl(var(--light-key2), 50%, 40%);
+    --dark-cl1: #2e5b9f;
+    --dark-cl2: #1b3d6f;
+    --dark-cl3: #0e2952;
+    --dark-cl4: #061a39;
+    --dark-cl5: #030e1d;
+}
+
+.bg-light1 {
+    background-color: var(--light-cl1);
+}
+.bg-light2 {
+    background-color: var(--light-cl2);
+}
+.bg-light3 {
+    background-color: var(--light-cl3);
+}
+.bg-light4 {
+    background-color: var(--light-cl4);
+}
+.bg-light5 {
+    background-color: var(--light-cl5);
+}
+
+.bg-light1-1 {
+    background-color: var(--light-cl1-1);
+}
+.bg-light2-1 {
+    background-color: var(--light-cl2-1);
+}
+.bg-light3-1 {
+    background-color: var(--light-cl3-1);
+}
+.bg-light4-1 {
+    background-color: var(--light-cl4-1);
+}
+.bg-light5-1 {
+    background-color: var(--light-cl5-1);
+}

@@ -12,6 +12,8 @@ import Product, {productLoader} from "./pages/Product";
 import ShoppingCart from "./pages/ShoppingCart";
 import {localstorage} from "./helper/localstorage";
 import SignIn from "./pages/SignIn";
+import Welcome, {welcomeLoader} from "./pages/Welcome";
+import User from "./pages/User";
 
 function App() {
 
@@ -33,6 +35,11 @@ function App() {
             errorElement: <ErrorPage />,
             children: [
                 {
+                    index: true,
+                    element: <Welcome/>,
+                    loader: welcomeLoader
+                },
+                {
                     path: "/products",
                     element: <ProductsSidebar />,
                     children: [
@@ -53,6 +60,10 @@ function App() {
 
                     ]
 
+                },
+                {
+                    path: "/user",
+                    element: <User />,
                 },
                 {
                     path: "/shoppingcart",

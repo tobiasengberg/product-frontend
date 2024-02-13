@@ -1,16 +1,6 @@
 :root {
   box-sizing: border-box;
-  --light-cl1: #fafcff;
-  --light-cl2: #d7e0ee;
-  --light-cl3: #b3c6e2;
-  --light-cl4: #6f93ca;
-  --light-cl5: #4a79c0;
-  --dark-cl1: #2e5b9f;
-  --dark-cl2: #1b3d6f;
-  --dark-cl3: #0e2952;
-  --dark-cl4: #061a39;
-  --dark-cl5: #030e1d;
-
+  --site-value: 1400px;
 }
 
 body {
@@ -23,6 +13,16 @@ body {
 * {
   padding: 0;
   margin: 0;
+}
+
+a, a:hover, a:visited, a:link {
+  color: var(--light-cl5);
+  text-decoration: none;
+}
+
+
+.italic {
+  font-style: italic;
 }
 
 code {

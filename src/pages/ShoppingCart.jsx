@@ -101,7 +101,7 @@ const ShoppingCart = ({shopping, setShopping}) => {
                 return (
                     <ProductItem >
                         <div key={product.id}>
-                            <img src={`/img/${product.id}.png`} alt=""/>
+                            <img src={`/img/${Math.floor(Math.random()*8) +1}.png`} alt=""/>
                             <Link to={`/products/product/${product.id}`}>
                                 <p>{product.name}</p>
                                 <p>{product.description.substring(0, 40)} ...</p>

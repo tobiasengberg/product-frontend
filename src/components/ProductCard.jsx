@@ -22,7 +22,7 @@ const ProductCard = ({product}) => {
 
     return (
         <Card>
-            <img src={`/img/${product.id}.png`} alt={product.name}/>
+            <img src={`/img/${Math.floor(Math.random()*8) +1}.png`} alt={product.name}/>
             <div>
                 <Link to={`/products/product/${product.id}`}>{product.name}</Link>
                 <p>{product.price}</p>
