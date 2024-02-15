@@ -55,7 +55,7 @@ height: 50vh;
 `;
 
 export const welcomeLoader = () => {
-    return axios.get('/home').then(response => response.data);
+    return axios.get('/Home').then(response => response.data);
 }
 
 const Welcome = () => {

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { NavLink, Outlet} from "react-router-dom";
+import {Link, NavLink, Outlet} from "react-router-dom";
 import {SiteValues} from "../SiteValues";
 import {LoginContext} from "../contexts";
 import axios from "axios";
@@ -22,7 +22,11 @@ const Root = ({counter}) => {
             <nav className="primary-site-navigation">
                 <ul className="nav-options">
                     <li className="primary-nav-item nav-item"><NavLink to="/products">Products</NavLink></li>
-                    {loggedIn ? <li className="primary-nav-item nav-item"><button onClick={handleLogout}>Sign Out</button></li>
+                    {loggedIn ? ( <>
+                            <NavLink to="/user">Current User</NavLink>
+                            <li className="primary-nav-item nav-item"><button onClick={handleLogout}>Sign Out</button></li>
+                        </>
+                        )
                         : <li className="primary-nav-item nav-item"><NavLink to="/signin">Sign In</NavLink></li>
                     }
                     <li className="primary-nav-item nav-item"><NavLink to="/shoppingcart">Shopping Cart<span

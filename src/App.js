@@ -1,7 +1,6 @@
 
 import './App.css';
 import React, {useEffect, useState} from "react";
-import axios from "axios";
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import Root from "./pages/Root";
 import ErrorPage from "./pages/ErrorPage";
@@ -13,7 +12,7 @@ import ShoppingCart from "./pages/ShoppingCart";
 import {localstorage} from "./helper/localstorage";
 import SignIn from "./pages/SignIn";
 import Welcome, {welcomeLoader} from "./pages/Welcome";
-import User from "./pages/User";
+import User, {userLoader} from "./pages/User";
 
 function App() {
 
@@ -36,7 +35,7 @@ function App() {
             children: [
                 {
                     index: true,
-                    element: <Welcome/>,
+                    element: <Welcome />,
                     loader: welcomeLoader
                 },
                 {
@@ -64,6 +63,7 @@ function App() {
                 {
                     path: "/user",
                     element: <User />,
+                    loader: userLoader
                 },
                 {
                     path: "/shoppingcart",

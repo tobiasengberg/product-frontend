@@ -2,6 +2,7 @@ import React, {useContext, useState} from 'react';
 import styled from "styled-components";
 import axios from "axios";
 import {LoginContext} from "../contexts";
+import {Button} from "primereact/button";
 
 const Container = styled.div`
     margin: 100px auto;
@@ -78,8 +79,8 @@ const SignIn = () => {
             ))
 
             }
-            <button onClick={handleTest}>Test</button>
-            <button onClick={handleLogout}>Logout</button>
+            <Button label="Test" onClick={handleTest} />
+            <Button label="Logout" onClick={handleLogout} />
         </Container>
     );
 };

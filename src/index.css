@@ -34,6 +34,10 @@ code {
   background-color: #4a5569;
 }
 
+.primary-site-navigation a {
+  color: white;
+  padding-top: 8px;
+}
 .secondary-site-navigation {
   background-color: var(--light-cl1);
 }
